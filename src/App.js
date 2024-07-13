@@ -7,12 +7,6 @@ import { CreateTodoButton } from './CreateTodoButton';
 import './TodoItem.css';
 import './Icon.css';
 
-const defaultTodos = [
-    { text: 'Cortar cebolla', completed: true },
-    { text: 'Tomar cerveza', completed: false },
-    { text: 'Cortar papas', completed: false },
-];
-
 function App() {
 
     const localStorageKey = 'TODOS_V1';
@@ -70,7 +64,7 @@ function App() {
             completed: false
         };
         const newTodos = [...todos];
-        
+
         newTodos.push(newTodo);
         
         saveTodos(newTodos);
