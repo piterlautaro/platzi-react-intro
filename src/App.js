@@ -27,8 +27,6 @@ function App() {
         localStorage.setItem(localStorageKey, localStorageTodos);
         parsedTodos = JSON.parse(localStorageTodos);
     }
-    
-    // let parsedTodos = JSON.parse(localStorageTodos);
 
     const [todos, setTodos] = React.useState(parsedTodos);
     const [searchValue, setSearchValue] = React.useState('');
@@ -66,6 +64,18 @@ function App() {
         saveTodos(newTodos);
     }
 
+    const storeTodo = (text) => {
+        const newTodo = {
+            text,
+            completed: false
+        };
+        const newTodos = [...todos];
+        
+        newTodos.push(newTodo);
+        
+        saveTodos(newTodos);
+    }
+
     return (
         <>
             <TodoCounter
@@ -86,7 +96,7 @@ function App() {
                     />
                 ))}
             </TodoList>
-            <CreateTodoButton />
+            <CreateTodoButton catchTodo={storeTodo} />
         </>
     );
 }
